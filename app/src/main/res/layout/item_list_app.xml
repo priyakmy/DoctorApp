@@ -1,0 +1,85 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/childview_bg"
+    android:orientation="horizontal"
+    android:padding="@dimen/padding_10">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_txn_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Txn id: 858585"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_05"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ord Amt: "
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/tv_ord_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="838383"
+                android:textColor="#ff3c2c" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_ordered_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="07-06-2017 | 11:10"
+            android:textSize="@dimen/text_14sp"
+            android:textColor="@color/black"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_05"
+            android:orientation="horizontal"
+            android:gravity="right">
+
+            <ImageView
+                android:id="@+id/iv_payment_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/cart"
+                android:layout_marginRight="@dimen/margin_10"/>
+
+            <TextView
+                android:id="@+id/tv_delivery_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="07-06-2017 \n 11:10"
+                android:textSize="@dimen/text_14sp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

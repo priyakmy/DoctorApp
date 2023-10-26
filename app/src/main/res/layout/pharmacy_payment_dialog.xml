@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e2e2e2"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/main_layout_backgroung"
+        android:elevation="2dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/logo" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_15"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:layout_marginRight="@dimen/margin_10"
+            android:layout_marginTop="@dimen/margin_15"
+            android:background="@drawable/payment_main_screen_bg"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/header_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_10"
+                android:background="@drawable/pat_info_header_bg"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_10">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_pat_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jaideep Gupta"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_pat_dob_age"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DOB :25|M" />
+
+                    <TextView
+                        android:id="@+id/tv_pat_contact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mob: 9643453174" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="right">
+
+                    <LinearLayout
+                        android:id="@+id/ll_consultant"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/ib_close"
+                        android:layout_toStartOf="@+id/ib_close"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_txn_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Txn Id: 858585"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:visibility="gone"/>
+
+                        <TextView
+                            android:id="@+id/tv_ordered_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:maxLines="2"
+                            android:text="08-06-2017 | 03:18 PM"
+                            android:textSize="@dimen/text_12sp"
+                            android:visibility="gone"/>
+                        <TextView
+                            android:id="@+id/tv_consultant_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:text="Dr. Ajay Swaroop"
+                            android:visibility="visible"/>
+                        <TextView
+                            android:id="@+id/tv_ord_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ord Id: xxxxxx"
+                            android:layout_marginTop="@dimen/margin_05"
+                            android:visibility="visible"/>
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/bill_payment_activity_hIs_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_05"
+                android:layout_marginRight="@dimen/margin_05"
+                android:layout_marginTop="@dimen/margin_10"
+                android:background="@drawable/bill_et_bg"
+                android:ems="@integer/large_size"
+                android:enabled="true"
+                android:hint="HIS Bill No."
+                android:maxLines="1"
+                android:textColor="#000"
+                android:textColorHint="#767676" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_10"
+                android:background="@mipmap/amount_box"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Order Amount"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/bill_payable_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:text="Amount"
+                    android:maxLines="1"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/text_20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_payment_mode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/margin_20"
+                android:layout_gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Payment Option"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/text_20sp"
+                    android:textColor="@color/black"/>
+
+                <RadioGroup
+                    android:id="@+id/payment_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/cash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="CASH"
+                        android:layout_marginRight="@dimen/margin_05"
+                        android:textSize="@dimen/text_16sp"/>
+
+                    <RadioButton
+                        android:id="@+id/card"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:layout_marginLeft="@dimen/margin_05"
+                        android:text="CASH CARD"
+                        android:textSize="@dimen/text_16sp"/>
+
+                    <RadioButton
+                        android:id="@+id/cheque"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="Cheque"
+                        android:textSize="@dimen/text_20sp"
+                        android:visibility="gone"/>
+                </RadioGroup>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/activity_bill_payment_paynow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@drawable/payment_btn_bg"
+                android:text="Pay Now"
+                android:textSize="@dimen/text_16sp"
+                android:layout_margin="@dimen/margin_10"
+                android:textColor="@color/white" />
+            <TextView
+                android:id="@+id/tv_close_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@drawable/cancel_bg"
+                android:text="Cancel"
+                android:textSize="@dimen/text_16sp"
+                android:layout_margin="@dimen/margin_10"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

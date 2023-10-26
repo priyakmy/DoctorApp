@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pharmacy_lab_dialog_bg"
+    android:padding="@dimen/padding_20">
+
+    <EditText
+        android:id="@+id/bill_payment_activity_hIs_no"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/margin_05"
+        android:layout_marginRight="@dimen/margin_05"
+        android:background="@drawable/bill_et_bg"
+        android:ems="@integer/large_size"
+        android:enabled="true"
+        android:hint="HIS No"
+        android:maxLines="1"
+        android:textColorHint="@color/text_hint"
+        android:textColor="#000"
+        android:textSize="@dimen/text_20sp"
+        android:layout_marginTop="@dimen/margin_10"/>
+    <EditText
+        android:id="@+id/bill_payable_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/margin_05"
+        android:layout_marginRight="@dimen/margin_05"
+        android:background="@drawable/bill_et_bg"
+        android:ems="@integer/large_size"
+        android:enabled="false"
+        android:hint="Amount"
+        android:inputType="numberDecimal"
+        android:maxLines="1"
+        android:textColorHint="@color/text_hint"
+        android:textColor="#000"
+        android:textSize="@dimen/text_20sp"
+        android:layout_marginTop="@dimen/margin_10"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_10"
+        android:layout_marginRight="@dimen/margin_10"
+        android:layout_marginTop="@dimen/margin_10">
+
+        <LinearLayout
+            android:id="@+id/ll_payment_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PAYMENT MODE:"
+                android:textSize="@dimen/text_20sp"/>
+
+            <RadioGroup
+                android:id="@+id/payment_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/cash"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Cash"
+                    android:textSize="@dimen/text_20sp"/>
+
+                <RadioButton
+                    android:id="@+id/card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="Card"
+                    android:textSize="@dimen/text_20sp"/>
+
+                <RadioButton
+                    android:id="@+id/cheque"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="Cheque"
+                    android:textSize="@dimen/text_20sp"
+                    android:visibility="gone"/>
+            </RadioGroup>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/activity_bill_payment_paynow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/paynow_bg"
+            android:text="Pay Now"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+</LinearLayout>

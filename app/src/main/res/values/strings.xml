@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">mCURA Pharmacy</string>
+
+    <!--Login Activity-->
+    <string name="user_name">User Name</string>
+    <string name="password">Password</string>
+    <string name="submit">Submit</string>
+    <string name="loading_message">Loading...</string>
+    <string name="postdate">Post Date</string>
+    <string name="enter_date">Enter Date</string>
+    <string name="upload">Upload</string>
+    <string-array name="pharmacy_status">
+        <item>All</item>
+        <item>Order Pending</item>
+        <item>Order Requested</item>
+        <item>Delivery Pending</item>
+        <item>Delivered</item>
+    </string-array>
+    <string-array name="pharmacy_status_list">
+        <item>Pending</item>
+        <item>Requested</item>
+        <item>Billing Done</item>
+        <item>Completed</item>
+    </string-array>
+    <string-array name="lab_status">
+        <item>All</item>
+        <item>Pending</item>
+        <item>Requested</item>
+        <item>Billing Done</item>
+        <item>Sample Collection</item>
+        <item>Report Collection</item>
+        <item>Completed</item>
+    </string-array>
+    <string-array name="lab_status_list">
+        <item>Requested</item>
+        <item>Billing Done</item>
+        <item>Sample Collection</item>
+        <item>Report Collection</item>
+        <item>Completed</item>
+    </string-array>
+
+    <string name="view_record">View Record</string>
+    <string name="change_status">Change Status</string>
+    <string name="upload_record">Upload Record</string>
+    <string name="estimate_id">Estimate Id</string>
+    <string name="cancel">Cancel</string>
+    <string name="login">Login</string>
+    <string name="deliverConfirmationMsg">Do you want to deliver this order ?</string>
+    <string name="sampleConfirmationMsg">Do you want to deliver report of this order ?</string>
+    <string name="orderCancelMsg">Do you want to cancel this order ?</string>
+
+</resources>

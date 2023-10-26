@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/pharmacy_pending_order_row_layout_bg">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_marginLeft="@dimen/margin_05">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order Id"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_order_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00000"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/margin_05"/>
+
+        <TextView
+            android:id="@+id/tv_token_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@mipmap/c_tokenbg"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_16sp"
+            android:layout_marginTop="@dimen/margin_05"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="left">
+
+        <TextView
+            android:id="@+id/tv_patient_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="patient name"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_patient_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="xxxxxxxxx"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/margin_05"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="left">
+
+        <TextView
+            android:id="@+id/tv_doc_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Doctor Name"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/iv_view_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawableTop="@mipmap/ic_viewrecord"
+            android:focusable="false"
+            android:background="@null"
+            android:layout_marginTop="@dimen/margin_05"/>
+    </LinearLayout>
+    <ImageButton
+        android:id="@+id/iv_open_child"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@mipmap/arrow_left"
+        android:focusable="false"
+        android:background="@null"
+        android:layout_gravity="center_vertical"/>
+</LinearLayout>

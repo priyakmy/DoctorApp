@@ -1,0 +1,74 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- MAIN SCREEN -->
+    <dimen name="main_screen_button_height">35dp</dimen>
+    <dimen name="main_screen_text_sise">12dp</dimen>
+    <dimen name="main_screen_menu_padding">8dp</dimen>
+    <dimen name="table_layout_dimension">12dp</dimen>
+
+    <dimen name="height_pullrefresh">30dp</dimen>
+    <!-- Brush sizes -->
+    <dimen name="small_brush">10dp</dimen>
+
+    <integer name="small_size">10</integer>
+
+    <dimen name="medium_brush">20dp</dimen>
+
+    <integer name="medium_size">20</integer>
+
+    <dimen name="large_brush">30dp</dimen>
+
+    <integer name="large_size">30</integer>
+
+    <dimen name="padding_02">2dp</dimen>
+    <dimen name="padding_05">5dp</dimen>
+    <dimen name="padding_10">10dp</dimen>
+    <dimen name="padding_15">15dp</dimen>
+    <dimen name="padding_20">20dp</dimen>
+
+    <dimen name="margin_01">1dp</dimen>
+    <dimen name="margin_02">2dp</dimen>
+    <dimen name="margin_05">5dp</dimen>
+    <dimen name="margin_07">7dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_15">15dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_25">25dp</dimen>
+    <dimen name="margin_30">30dp</dimen>
+    <dimen name="margin_35">35dp</dimen>
+    <dimen name="margin_40">40dp</dimen>
+
+    <dimen name="text_14sp">14sp</dimen>
+    <dimen name="text_12sp">12sp</dimen>
+    <dimen name="text_16sp">16sp</dimen>
+    <dimen name="text_18sp">18sp</dimen>
+    <dimen name="text_20sp">20sp</dimen>
+
+    <dimen name="btm_button_width">100dp</dimen>
+    <dimen name="dialog_complaint_50">50dp</dimen>
+    <dimen name="dialog_complaint_40">40dp</dimen>
+    <dimen name="dialog_complaint_30">30dp</dimen>
+    <dimen name="dialog_complaint_60">60dp</dimen>
+    <dimen name="min_margin_10">-10dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_30sp">30sp</dimen>
+    <dimen name="text_24sp">24sp</dimen>
+
+
+    <dimen name="radio_button_conner_radius">5dp</dimen>
+    <dimen name="radio_button_stroke_border">1dp</dimen>
+    <dimen name="text_10sp">10sp</dimen>
+    <dimen name="padding_30">30dp</dimen>
+    <dimen name="margin_10dp">10dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="text_22sp">22sp</dimen>
+    <dimen name="_40dp">40dp</dimen>
+    <dimen name="_12sp">12sp</dimen>
+    <dimen name="_30dp">30dp</dimen>
+    <dimen name="_150dp">150dp</dimen>
+    <dimen name="_10dp">10dp</dimen>
+</resources>

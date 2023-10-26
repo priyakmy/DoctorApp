@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_norm"
+        android:paddingBottom="@dimen/padding_05"
+        android:paddingTop="@dimen/padding_05">
+        <ImageView
+            android:id="@+id/print"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bill_printer"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/margin_10"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Visit Summary"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/text_16sp"/>
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/popup_close"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/margin_10"/>
+    </RelativeLayout>
+    <WebView
+        android:id="@+id/handwriting_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+</LinearLayout>

@@ -1,0 +1,242 @@
+[
+  {
+    "followupunit" : "Days",
+    "followupid" : "1",
+    "followupnumber" : "3"
+  },
+  {
+    "followupunit" : "Week",
+    "followupid" : "2",
+    "followupnumber" : "1"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "3",
+    "followupnumber" : "10"
+  },
+  {
+    "followupunit" : "Weeks",
+    "followupid" : "4",
+    "followupnumber" : "2"
+  },
+  {
+    "followupunit" : "Month",
+    "followupid" : "5",
+    "followupnumber" : "1"
+  },
+  {
+    "followupunit" : "Months",
+    "followupid" : "6",
+    "followupnumber" : "3"
+  },
+  {
+    "followupunit" : "Day",
+    "followupid" : "55",
+    "followupnumber" : "1"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "56",
+    "followupnumber" : "2"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "58",
+    "followupnumber" : "4"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "59",
+    "followupnumber" : "5"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "60",
+    "followupnumber" : "6"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "61",
+    "followupnumber" : "7"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "62",
+    "followupnumber" : "8"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "63",
+    "followupnumber" : "9"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "65",
+    "followupnumber" : "11"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "66",
+    "followupnumber" : "12"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "67",
+    "followupnumber" : "13"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "68",
+    "followupnumber" : "14"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "69",
+    "followupnumber" : "15"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "70",
+    "followupnumber" : "16"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "71",
+    "followupnumber" : "17"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "72",
+    "followupnumber" : "18"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "73",
+    "followupnumber" : "19"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "74",
+    "followupnumber" : "20"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "75",
+    "followupnumber" : "21"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "76",
+    "followupnumber" : "22"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "77",
+    "followupnumber" : "23"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "78",
+    "followupnumber" : "24"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "79",
+    "followupnumber" : "25"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "80",
+    "followupnumber" : "26"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "81",
+    "followupnumber" : "27"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "82",
+    "followupnumber" : "28"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "83",
+    "followupnumber" : "29"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "84",
+    "followupnumber" : "30"
+  },
+  {
+    "followupunit" : "Days",
+    "followupid" : "85",
+    "followupnumber" : "31"
+  },
+  {
+    "followupunit" : "Weeks",
+    "followupid" : "88",
+    "followupnumber" : "3"
+  },
+  {
+    "followupunit" : "Weeks",
+    "followupid" : "89",
+    "followupnumber" : "4"
+  },
+  {
+    "followupunit" : "Weeks",
+    "followupid" : "90",
+    "followupnumber" : "5"
+  },
+  {
+    "followupunit" : "Months",
+    "followupid" : "92",
+    "followupnumber" : "2"
+  },
+  {
+    "followupunit" : "Months",
+    "followupid" : "94",
+    "followupnumber" : "4"
+  },
+  {
+    "followupunit" : "Months",
+    "followupid" : "95",
+    "followupnumber" : "5"
+  },
+  {
+    "followupunit" : "Months",
+    "followupid" : "96",
+    "followupnumber" : "6"
+  },
+  {
+    "followupunit" : "Months",
+    "followupid" : "97",
+    "followupnumber" : "7"
+  },
+  {
+    "followupunit" : "Months",
+    "followupid" : "98",
+    "followupnumber" : "8"
+  },
+  {
+    "followupunit" : "Months",
+    "followupid" : "99",
+    "followupnumber" : "9"
+  },
+  {
+    "followupunit" : "Months",
+    "followupid" : "100",
+    "followupnumber" : "10"
+  },
+  {
+    "followupunit" : "Months",
+    "followupid" : "101",
+    "followupnumber" : "11"
+  },
+  {
+    "followupunit" : "Months",
+    "followupid" : "102",
+    "followupnumber" : "12"
+  }
+]

@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/padding_05"
+    android:paddingLeft="@dimen/padding_30">
+
+    <CheckBox
+        android:id="@+id/cb_select_row_level_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_02"
+        android:layout_marginLeft="@dimen/margin_30"
+        android:layout_marginRight="@dimen/margin_05"
+        android:layout_centerVertical="true"
+        android:button="@drawable/cb_selector"
+        android:checked="false"
+        android:enabled="true"
+        android:scaleX="1.3"
+        android:scaleY="1.3"
+        android:visibility="invisible"/>
+    <ImageButton
+        android:id="@+id/indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/plus"
+        android:layout_toRightOf="@+id/cb_select_row_level_second"
+        android:layout_marginLeft="@dimen/margin_10"/>
+
+
+    <TextView
+        android:id="@+id/lblListHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/indicator"
+        android:background="?android:attr/activatedBackgroundIndicator"
+        android:text="Test"
+        android:textSize="@dimen/text_16sp"/>
+
+    <TextView
+        android:id="@+id/tv_test_cost_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/lab_test_cost_bg"
+        android:text=""
+        android:textColor="@color/white"
+        android:visibility="gone"
+        android:layout_marginRight="@dimen/margin_10"/>
+</RelativeLayout>
+
+
