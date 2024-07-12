@@ -60,7 +60,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 public class QueueActivity extends AppCompatActivity implements View.OnClickListener ,AdapterView.OnItemSelectedListener{
-    private TextView selectCounter,selectfacid,start_opd_btn,tv_end_opd,tv_opd_msg,btnNextVisit, bQueueHold,btnQueueHold;
+    private TextView selectCounter,selectfacid,start_opd_btn,tv_end_opd,tv_opd_msg,btnNextVisit,btnQueueHold;
 
 
     SwipeMenuListView queueList;
@@ -128,8 +128,7 @@ public class QueueActivity extends AppCompatActivity implements View.OnClickList
     private String[] scheduleNames;
     private int videoSubscription = 0;
     private ImageView ivSubtanentLogo;
-
-
+    private Integer schedulemodelscheduleid;
 
 
     @Override
@@ -525,6 +524,9 @@ public class QueueActivity extends AppCompatActivity implements View.OnClickList
                         mScheduleArray);
                 counter_schedule.setAdapter(scheduleSpinnerAdapter);
                 dismissLoadingDialog();
+                schedulemodelscheduleid=scheduleSpinnerAdapter.getItem(1).getScheduleId();
+                Log.d("asdfghjk", schedulemodelscheduleid+"");
+
             }
 
             @Override
@@ -619,7 +621,7 @@ public class QueueActivity extends AppCompatActivity implements View.OnClickList
     }
     public void getVisitingStatus(int mrno) {
         showLoadingDialog();
-        mCuraApplication.getInstance().mCuraEndPoint.patient_Visit_Entry(mrno, user_role_id, subTanentId, scheduleId, completeDate, new Callback<GenerateTokenResultModel>() {
+        mCuraApplication.getInstance().mCuraEndPoint.patient_Visit_Entry(mrno, user_role_id, subTanentId, schedulemodelscheduleid, completeDate, new Callback<GenerateTokenResultModel>() {
             @Override
             public void success(GenerateTokenResultModel s, Response response) {
                 int chartGenerateStatus;
@@ -766,7 +768,7 @@ public class QueueActivity extends AppCompatActivity implements View.OnClickList
         JsonObject obj = new JsonObject();
         obj.addProperty("UserRoleId", userRoleIdnew);
         obj.addProperty("SubTenantId", facsubTenantId);
-        obj.addProperty("ScheduleId", scheduleId);
+        obj.addProperty("ScheduleId", schedulemodelscheduleid);
         obj.addProperty("Date", completeDate);
 
         showLoadingDialog();
@@ -921,7 +923,7 @@ public void getQueueData() {
     queueStatusArray = new QueueStatus[]{};
     list.clear();
     showLoadingDialog();
-    mCuraApplication.getInstance().mCuraEndPoint.tokenViewOther(userRoleIdnew, facsubTenantId, scheduleId, completeDate, new Callback<QueueStatus[]>() {
+    mCuraApplication.getInstance().mCuraEndPoint.tokenViewOther(userRoleIdnew, facsubTenantId, schedulemodelscheduleid, completeDate, new Callback<QueueStatus[]>() {
         @Override
         public void success(QueueStatus[] queueStatus, Response response) {
             if (queueStatus != null) {

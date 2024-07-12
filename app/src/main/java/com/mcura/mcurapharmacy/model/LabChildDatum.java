@@ -7,7 +7,11 @@ package com.mcura.mcurapharmacy.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class LabChildDatum {
+
+
 
     @SerializedName("LabOrderId")
     @Expose
@@ -24,12 +28,19 @@ public class LabChildDatum {
     @SerializedName("OrderStatus")
     @Expose
     private Integer orderStatus;
-    @SerializedName("connection")
-    @Expose
-    private Object connection;
     @SerializedName("DeliveredDate")
     @Expose
     private String deliveredDate;
+    @SerializedName("connection")
+    @Expose
+    private Object connection;
+    @SerializedName("rpOrderId")
+    @Expose
+    private String rpOrderId;
+    @SerializedName("txnDetails")
+    @Expose
+    private List<TxnDetail> txnDetails;
+
     public Integer getLabOrderId() {
         return labOrderId;
     }
@@ -70,6 +81,14 @@ public class LabChildDatum {
         this.orderStatus = orderStatus;
     }
 
+    public String getDeliveredDate() {
+        return deliveredDate;
+    }
+
+    public void setDeliveredDate(String deliveredDate) {
+        this.deliveredDate = deliveredDate;
+    }
+
     public Object getConnection() {
         return connection;
     }
@@ -78,11 +97,21 @@ public class LabChildDatum {
         this.connection = connection;
     }
 
-    public String getDeliveredDate() {
-        return deliveredDate;
+    public String getRpOrderId() {
+        return rpOrderId;
     }
 
-    public void setDeliveredDate(String deliveredDate) {
-        this.deliveredDate = deliveredDate;
+    public void setRpOrderId(String rpOrderId) {
+        this.rpOrderId = rpOrderId;
     }
+
+    public List<TxnDetail> getTxnDetails() {
+        return txnDetails;
+    }
+
+    public void setTxnDetails(List<TxnDetail> txnDetails) {
+        this.txnDetails = txnDetails;
+    }
+
 }
+

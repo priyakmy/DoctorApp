@@ -52,20 +52,20 @@
                         android:id="@+id/tv_pat_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Jaideep Gupta"
+                        android:text="@string/jaideep_gupta"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tv_pat_dob_age"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="DOB :25|M" />
+                        android:text="@string/dob_25_m" />
 
                     <TextView
                         android:id="@+id/tv_pat_contact"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Mob: 9643453174" />
+                        android:text="@string/mob_9643453174" />
                 </LinearLayout>
 
                 <RelativeLayout
@@ -88,7 +88,7 @@
                             android:id="@+id/tv_txn_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Txn Id: 858585"
+                            android:text="@string/txn_id_858585"
                             android:textColor="@color/black"
                             android:textStyle="bold"
                             android:visibility="gone"/>
@@ -99,7 +99,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="3dp"
                             android:maxLines="2"
-                            android:text="08-06-2017 | 03:18 PM"
+                            android:text="@string/_08_06_2017_03_18_pm"
                             android:textSize="@dimen/text_12sp"
                             android:visibility="gone"/>
                         <TextView
@@ -107,13 +107,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
-                            android:text="Dr. Ajay Swaroop"
+                            android:text="@string/dr_ajay_swaroop"
                             android:visibility="visible"/>
                         <TextView
                             android:id="@+id/tv_ord_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Ord Id: xxxxxx"
+                            android:text="@string/ord_id_xxxxxx"
                             android:layout_marginTop="@dimen/margin_05"
                             android:visibility="visible"/>
                     </LinearLayout>
@@ -125,14 +125,13 @@
                 android:id="@+id/bill_payment_activity_hIs_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/margin_05"
                 android:layout_marginRight="@dimen/margin_05"
                 android:layout_marginTop="@dimen/margin_10"
                 android:background="@drawable/bill_et_bg"
                 android:ems="@integer/large_size"
                 android:enabled="true"
-                android:hint="HIS Bill No."
+                android:hint="@string/his_bill_no"
                 android:maxLines="1"
                 android:textColor="#000"
                 android:textColorHint="#767676" />
@@ -149,7 +148,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Total Order Amount"
+                    android:text="@string/total_order_amount"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -206,22 +205,43 @@
                         android:textSize="@dimen/text_16sp"/>
 
                     <RadioButton
+                        android:id="@+id/online"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:layout_marginLeft="@dimen/margin_05"
+                        android:text="ONLINE"
+                        android:textSize="@dimen/text_16sp"/>
+
+
+                   <!-- <RadioButton
                         android:id="@+id/cheque"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="false"
                         android:text="Cheque"
-                        android:textSize="@dimen/text_20sp"
-                        android:visibility="gone"/>
+                        android:textSize="@dimen/text_20sp" />-->
+
                 </RadioGroup>
             </LinearLayout>
+            <TextView
+                android:id="@+id/activity_bill_payment_payLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@drawable/payment_btn_bg"
+                android:text="@string/send_payment_link"
+                android:textSize="@dimen/text_16sp"
+                android:layout_margin="@dimen/margin_10"
+                android:textColor="@color/white" />
+
             <TextView
                 android:id="@+id/activity_bill_payment_paynow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:background="@drawable/payment_btn_bg"
-                android:text="Pay Now"
+                android:text="@string/pay_now"
                 android:textSize="@dimen/text_16sp"
                 android:layout_margin="@dimen/margin_10"
                 android:textColor="@color/white" />
@@ -231,7 +251,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:background="@drawable/cancel_bg"
-                android:text="Cancel"
+                android:text="@string/_cancel"
                 android:textSize="@dimen/text_16sp"
                 android:layout_margin="@dimen/margin_10"
                 android:textColor="@color/black" />

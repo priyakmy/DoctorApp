@@ -1,4 +1,3 @@
-
 package com.mcura.mcurapharmacy.model;
 
 import com.google.gson.annotations.Expose;
@@ -21,6 +20,9 @@ public class PostPaymentModel {
     @SerializedName("statusId")
     @Expose
     private int statusId;
+    @SerializedName("rpOrderId")
+    @Expose
+    private Object rpOrderId;
 
     public int getStatusId() {
         return statusId;
@@ -29,8 +31,9 @@ public class PostPaymentModel {
     public void setStatusId(int statusId) {
         this.statusId = statusId;
     }
+
     /**
-     * 
+     *
      * @return
      *     The iD
      */
@@ -39,7 +42,7 @@ public class PostPaymentModel {
     }
 
     /**
-     * 
+     *
      * @param iD
      *     The ID
      */
@@ -48,7 +51,7 @@ public class PostPaymentModel {
     }
 
     /**
-     * 
+     *
      * @return
      *     The filepath
      */
@@ -57,7 +60,7 @@ public class PostPaymentModel {
     }
 
     /**
-     * 
+     *
      * @param filepath
      *     The filepath
      */
@@ -66,7 +69,7 @@ public class PostPaymentModel {
     }
 
     /**
-     * 
+     *
      * @return
      *     The msg
      */
@@ -75,7 +78,7 @@ public class PostPaymentModel {
     }
 
     /**
-     * 
+     *
      * @param msg
      *     The msg
      */
@@ -84,7 +87,7 @@ public class PostPaymentModel {
     }
 
     /**
-     * 
+     *
      * @return
      *     The status
      */
@@ -93,12 +96,28 @@ public class PostPaymentModel {
     }
 
     /**
-     * 
+     *
      * @param status
      *     The status
      */
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    /**
+     * @return The rpOrderId
+     */
+    public String getRpOrderId() {
+        return (String) rpOrderId;
+    }
+
+    /**
+     *
+     * @param rpOrderId
+     *     The rpOrderId
+     */
+    public void setRpOrderId(Object rpOrderId) {
+        this.rpOrderId = rpOrderId;
     }
 
 }

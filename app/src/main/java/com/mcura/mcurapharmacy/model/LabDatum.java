@@ -209,4 +209,54 @@ public class LabDatum {
         this.labChildData = labChildData;
     }
 
+
+
+
+
+
+
+    @SerializedName("recordId")
+    @Expose
+    private Integer recordId;
+    @SerializedName("email")
+    @Expose
+    private Object email;
+    @SerializedName("entryTypeId")
+    @Expose
+    private Integer entryTypeId;
+    @SerializedName("dataType")
+    @Expose
+    private Integer dataType;
+
+    public Integer getRecordId() {
+        return recordId;
+    }
+
+    public void setRecordId(Integer recordId) {
+        this.recordId = recordId;
+    }
+
+    public Object getEmail() {
+        return email;
+    }
+
+    public void setEmail(Object email) {
+        this.email = email;
+    }
+
+    public Integer getEntryTypeId() {
+        return entryTypeId;
+    }
+
+    public void setEntryTypeId(Integer entryTypeId) {
+        this.entryTypeId = entryTypeId;
+    }
+
+    public Integer getDataType() {
+        return dataType;
+    }
+
+    public void setDataType(Integer dataType) {
+        this.dataType = dataType;
+    }
 }

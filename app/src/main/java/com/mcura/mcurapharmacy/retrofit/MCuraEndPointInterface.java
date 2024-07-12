@@ -3,6 +3,7 @@ package com.mcura.mcurapharmacy.retrofit;
 import com.google.gson.JsonObject;
 import com.mcura.mcurapharmacy.model.CounterDataModel;
 import com.mcura.mcurapharmacy.model.CounterModel;
+import com.mcura.mcurapharmacy.model.CreatePaymentOrderResponseModel;
 import com.mcura.mcurapharmacy.model.CurrentTokenModel;
 import com.mcura.mcurapharmacy.model.GenerateTokenResultModel;
 import com.mcura.mcurapharmacy.model.LabOrderModel;
@@ -27,6 +28,7 @@ import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.POST;
 import retrofit.http.Query;
+import retrofit2.Call;
 
 /**
  * Created by mcura on 11/5/2015.
@@ -59,19 +61,21 @@ public interface MCuraEndPointInterface {
     //GetLabOrdersList_v5
     //GetLabOrdersList_v7
     //getLabOrdersList_v10
-    @GET("/getLabOrdersList_v10")
+    @GET("/getLabOrdersList_v11")
     void getLabOrdersList_v2(@Query("SubTenantId") int subtanentId, @Query("userroleid") int userroleid, @Query("dateFrom") String dateFrom, @Query("dateto") String dateto, Callback<LabOrderModel> resCallback);
 
     @GET("/SubtenantSearchByLoginId")
     void subtenantSearchByLoginId(@Query("UserRoleID") int userroleid, @Query("loginID") int loginID, @Query("FacilityTypeId") int facilityTypeId, Callback<SubtenantSearchByLoginId[]> resCallback);
+
     //http://test.tn.mcura.com/health_dev.svc/Json/getSubTenantForFacility?facilitySubtenantId=514
-@GET("/getSubTenantForFacility")
-    void getSubTenantForFacility(@Query("facilitySubtenantId") int userroleid , Callback<SubtenantLoginId[]> resCallback);
+    @GET("/getSubTenantForFacility")
+    void getSubTenantForFacility(@Query("facilitySubtenantId") int userroleid, Callback<SubtenantLoginId[]> resCallback);
 
 
     @GET("/getCounterList")
-    void getCounterList(@Query("SubTenantId") int subtanentId,@Query("serviceRoleIId") int serviceRoleIId,Callback<CounterDataModel[]> resCallback);
-/////////////
+    void getCounterList(@Query("SubTenantId") int subtanentId, @Query("serviceRoleIId") int serviceRoleIId, Callback<CounterDataModel[]> resCallback);
+
+    /////////////
     @POST("/UploadOrderImage")
     void uploadOrderImage(@Body JsonObject mObj, Callback<String> restCallback);
 
@@ -83,6 +87,7 @@ public interface MCuraEndPointInterface {
 
     @POST("/AddDrMessage")
     void addDrMessage(@Body JsonObject mObj, Callback<String> restCallback);
+
     @POST("/Generate_Token_Chart")
     void generate_Token_Chart(@Body JsonObject mObj, Callback<GenerateTokenResultModel> restCallback);
 
@@ -103,6 +108,7 @@ public interface MCuraEndPointInterface {
 
     @GET("/Cancel_Token_List")
     void cancel_Token_List(@Query("MRNo") int mrno, @Query("UserRoleId") int userRoleId, @Query("SubTenantId") int subtanentId, @Query("ScheduleId") int scheduleId, @Query("Date") String date, Callback<GenerateTokenResultModel> restCallback);
+
     @GET("/PharmacyPrescOrdersUpdate")
     void pharmacyPrescOrdersUpdate(@Query("UserRoleID") int userRoleID, @Query("presciptionID") int presciptionID, @Query("Statusid") int statusid,
                                    Callback<PharmacyPrescOrdersUpdateModel> restCallback);
@@ -127,7 +133,8 @@ public interface MCuraEndPointInterface {
     //PostPaymentLabFee_v4
     //PostPaymentLabFee_v5
     //PostPaymentLabFee_v6
-    @POST("/PostPaymentLabFee_v6")
+    // PostPaymentLabFee_v6
+    @POST("/Post_KH_PaymentLabFee_v4")
     void PostPaymentLabFee(@Body JsonObject mObj, Callback<PostPaymentModel> restCallback);
 
     @GET("/VerifyOTP")
@@ -173,13 +180,21 @@ public interface MCuraEndPointInterface {
     @POST("/LabPrescOrdersUpdateByTxnId")
     void labPrescOrdersUpdateByTxnId(@Body JsonObject mObj, Callback<PostPaymentModel> restCallback);
 
-    @POST("/PostLabOrderdetails_v2")
+    //PostLabOrderdetails_v2"
+    @POST("/Post_KH_LabOrderdetails_v1")
     void postLabOrderdetails_v2(@Body JsonObject mObj, Callback<LabPharmacyPostResponseModel> restCallback);
 
     @GET("/getSchedule_Day_v1")
     void getSchedule_Day(@Query("userRoleId") int userRoleID, @Query("CurDate") String currDate, Callback<ScheduleModel[]> restCallback);
 
+    @POST("/PostPaymentPartnerFee")
+    Call<PostPaymentModel> postPaymentlabandpharmacyFee(@Body JsonObject mObj);
+
 
     @GET("/GetSavedLabOrderDetails_v1")
     void getSavedLabOrderDetails(@Query("UserRoleId") int userRoleId, @Query("LabOrderId") int labOrderId, @Query("orderTransactionId") int orderTransactionId, Callback<LabOrderModel> restCallback);
+
+    @retrofit2.http.POST("CreatePaymentOrder_V2")
+    Call<CreatePaymentOrderResponseModel> createPaymentOrder(@retrofit2.http.Body JsonObject mObj);
 }
+

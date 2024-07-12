@@ -1212,6 +1212,7 @@ public class PharmacyActivity extends AppCompatActivity implements PharmacyInter
                     case R.id.cheque:
                         paymentMode = "3";
                         break;
+
                 }
             }
         });

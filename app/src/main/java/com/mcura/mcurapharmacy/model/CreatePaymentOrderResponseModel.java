@@ -1,15 +1,14 @@
-
 package com.mcura.mcurapharmacy.model;
 
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.mcura.mcurapharmacy.model.CreatePaymentRajorPayResponseModel.Data;
 
-public class LabOrderModel {
+public class CreatePaymentOrderResponseModel {
 
     @SerializedName("data")
     @Expose
-    private List<LabDatum> data = null;
+    private Data data;
     @SerializedName("status")
     @Expose
     private Integer status;
@@ -17,11 +16,11 @@ public class LabOrderModel {
     @Expose
     private String msg;
 
-    public List<LabDatum> getData() {
+    public Data getData() {
         return data;
     }
 
-    public void setData(List<LabDatum> data) {
+    public void setData(Data data) {
         this.data = data;
     }
 
@@ -42,9 +41,3 @@ public class LabOrderModel {
     }
 
 }
-
-
-
-
-
-

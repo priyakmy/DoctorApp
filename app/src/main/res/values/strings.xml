@@ -48,5 +48,18 @@
     <string name="deliverConfirmationMsg">Do you want to deliver this order ?</string>
     <string name="sampleConfirmationMsg">Do you want to deliver report of this order ?</string>
     <string name="orderCancelMsg">Do you want to cancel this order ?</string>
+    <string name="razorpay_error_msg">Your payment has been done but unable to proceed further due to weak network, please contact support team</string>
+    <string name="send_payment_link">send payment link</string>
+    <string name="total_order_amount">Total Order Amount</string>
+    <string name="his_bill_no">HIS Bill No.</string>
+    <string name="ord_id_xxxxxx">Ord Id: xxxxxx</string>
+    <string name="dr_ajay_swaroop">Dr. Ajay Swaroop</string>
+    <string name="_08_06_2017_03_18_pm">08-06-2017 | 03:18 PM</string>
+    <string name="txn_id_858585">Txn Id: 858585</string>
+    <string name="mob_9643453174">Mob: 9643453174</string>
+    <string name="dob_25_m">DOB :25|M</string>
+    <string name="jaideep_gupta">Jaideep Gupta</string>
+    <string name="_cancel">Cancel</string>
+    <string name="pay_now">Pay Now</string>
 
 </resources>

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.8">
+    <bytecodeTargetLevel target="15">
       <module name="AndroidStudioProjects.mCURAPharmacy.app" target="17" />
-      <module name="MCURA.mCURAPharmacy.app" target="17" />
       <module name="Native.mCURAPharmacy.app" target="17" />
     </bytecodeTargetLevel>
   </component>

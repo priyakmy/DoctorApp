@@ -1,6 +1,7 @@
 package com.mcura.mcurapharmacy.adpater;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -28,40 +29,32 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ExpandableListView;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import com.mcura.mcurapharmacy.Helper.Helper;
 import com.mcura.mcurapharmacy.Interface.LabInterface;
-import com.mcura.mcurapharmacy.Interface.PharmacyInterface;
 import com.mcura.mcurapharmacy.MCuraApplication;
 import com.mcura.mcurapharmacy.R;
 import com.mcura.mcurapharmacy.Utils.Constants;
 import com.mcura.mcurapharmacy.Utils.EnumType;
-import com.mcura.mcurapharmacy.activity.LabOrderActivity;
-import com.mcura.mcurapharmacy.activity.PharmacyActivity;
 import com.mcura.mcurapharmacy.model.LabDatum;
 import com.mcura.mcurapharmacy.model.LabOrderDetailModel;
 import com.mcura.mcurapharmacy.model.LabPharmacyPostResponseModel;
 import com.mcura.mcurapharmacy.model.PostPaymentModel;
 import com.mcura.mcurapharmacy.view.CustomExpListView;
-
-import org.w3c.dom.Text;
-
+import com.razorpay.Checkout;
+import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Date;
-
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -75,6 +68,7 @@ public class LabOrderDetailExpandableAdapter extends BaseExpandableListAdapter {
     private final SharedPreferences mSharedPreference;
     private Context mContext;
     private LabDatum labDatum;
+    private LabPharmacyPostResponseModel labPharmacyPostResponseModel;
     private ArrayList<LabOrderDetailModel> labOrderDetailModels;
     private boolean isAllChecked;
     private SecondLevelAdapter secondLevelAdapter;
@@ -202,7 +196,7 @@ public class LabOrderDetailExpandableAdapter extends BaseExpandableListAdapter {
                         mainLabDialog.dismiss();
                         ((LabInterface) mContext).reloadLabDetail();
                         objectKeyArray.add(new JsonPrimitive(labPharmacyPostResponseModel.getId().toString()));
-                        showLabBillPayDialog();
+                        showLabBillPayDialog(labPharmacyPostResponseModel.getRpOrderId());
                         Toast.makeText(mContext, labPharmacyPostResponseModel.getMsg(), Toast.LENGTH_LONG).show();
                     }
 
@@ -225,7 +219,7 @@ public class LabOrderDetailExpandableAdapter extends BaseExpandableListAdapter {
         });
     }
 
-    private void showLabBillPayDialog() {
+    private void showLabBillPayDialog(String rpOrderId) {
         final Dialog PaymentDialog = new Dialog(mContext);
         PaymentDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         PaymentDialog.getWindow().setDimAmount(0.5f);
@@ -250,6 +244,7 @@ public class LabOrderDetailExpandableAdapter extends BaseExpandableListAdapter {
         bill_payable_amount.setText(tv_total_amount.getText() + "");
         //cbRefund = (CheckBox) dialog.findViewById(R.id.cb_refund);
         RadioGroup payment_mode = (RadioGroup) PaymentDialog.findViewById(R.id.payment_mode);
+
         TextView activity_bill_payment_paynow = (TextView) PaymentDialog.findViewById(R.id.activity_bill_payment_paynow);
         TextView tv_close_dialog = (TextView) PaymentDialog.findViewById(R.id.tv_close_dialog);
         TextView tv_consultant_name = (TextView) PaymentDialog.findViewById(R.id.tv_consultant_name);
@@ -257,6 +252,9 @@ public class LabOrderDetailExpandableAdapter extends BaseExpandableListAdapter {
         TextView tv_pat_name = (TextView) PaymentDialog.findViewById(R.id.tv_pat_name);
         TextView tv_pat_dob_age = (TextView) PaymentDialog.findViewById(R.id.tv_pat_dob_age);
         TextView tv_pat_contact = (TextView) PaymentDialog.findViewById(R.id.tv_pat_contact);
+        RadioButton online = PaymentDialog.findViewById(R.id.online);
+        online.setVisibility(View.VISIBLE);
+
 
         tv_consultant_name.setText(labDatum.getDoctorName().toString());
         tv_pat_name.setText(labDatum.getPatname().toString());
@@ -304,11 +302,13 @@ public class LabOrderDetailExpandableAdapter extends BaseExpandableListAdapter {
                     paymentDescription = "Lab Amount";
 
                     if (paymentMode.equals("1")) {
-                        callPaymentAPiforLabKims(bill_payment_activity_hIs_no.getText().toString(), labDatum);
+                        callPaymentAPiforLabKims(bill_payment_activity_hIs_no.getText().toString(), labDatum, rpOrderId);
                     } else if (paymentMode.equals("2")) {
-                        callPaymentAPiforLabKims(bill_payment_activity_hIs_no.getText().toString(), labDatum);
+                        callPaymentAPiforLabKims(bill_payment_activity_hIs_no.getText().toString(), labDatum,rpOrderId);
                     } else if (paymentMode.equals("3")) {
-                        callPaymentAPiforLabKims(bill_payment_activity_hIs_no.getText().toString(), labDatum);
+                        callPaymentAPiforLabKims(bill_payment_activity_hIs_no.getText().toString(), labDatum,rpOrderId);
+                    }else if(paymentMode.equals("4")){
+                        callPaymentAPiforLabKims(bill_payment_activity_hIs_no.getText().toString(), labDatum,rpOrderId);
                     }
                 } else {
                     bill_payable_amount.setError("Enter Amount to be paid.");
@@ -328,6 +328,9 @@ public class LabOrderDetailExpandableAdapter extends BaseExpandableListAdapter {
                     case R.id.cheque:
                         paymentMode = "3";
                         break;
+                    case R.id.online:
+                        paymentMode = "4";
+                        break;
                 }
             }
         });
@@ -341,7 +344,7 @@ public class LabOrderDetailExpandableAdapter extends BaseExpandableListAdapter {
         PaymentDialog.show();
     }
 
-    private void callPaymentAPiforLabKims(String his, LabDatum labDatum) {
+    private void callPaymentAPiforLabKims(String his, LabDatum labDatum,String id) {
         String hId;
         if (labDatum.getHospitalNo().equals("")) {
             hId = "0";
@@ -377,6 +380,41 @@ public class LabOrderDetailExpandableAdapter extends BaseExpandableListAdapter {
         if (paymentMode.equals("3")) {
             postPaymentForLabCash(obj, labDatum);
         }
+        if (paymentMode.equals("4")){
+            startPayment(id);
+
+        }
+    }
+
+    private void startPayment(String orderId) {
+            Checkout checkout = new Checkout();
+            checkout.setImage(R.drawable.logo);
+            Log.d("LabOrderDetailExp", "startPayment: ");
+            try {
+                JSONObject options = new JSONObject();
+                options.put("name", "mCURA Mobile Health");
+                options.put("description", "Fill Cash Card");
+                options.put("image", "https://www.mcura.com/images/logo.png");
+                options.put("order_id", orderId);
+                options.put("currency", "INR");
+                JSONObject prefill = new JSONObject();
+                prefill.put("name","mCura");
+                prefill.put("email", "patEmailId");
+                prefill.put("contact", "patMobile");
+                options.put("prefill", prefill);
+                options.put("amount", getAmount(tv_total_amount.getText().toString()));
+
+                Log.d("LaborderDetailExp", "options: "+options.toString());
+                checkout.open((Activity) mContext, options);
+
+            } catch (Exception e) {
+                Log.d("LaborderDetailExp", "Error in starting Razorpay Checkout", e);
+            }
+    }
+    private String getAmount(String amt) {
+        String[] paymentAmount = payableAmount.split("\\.");
+        int amount = Integer.parseInt(paymentAmount[0]);
+        return String.valueOf(amount*100);
     }
 
     private void postPaymentForLabCard(JsonObject obj, final LabDatum labDatum) {

@@ -63,6 +63,9 @@
         <service
             android:name=".service.DownloadService"
             android:exported="false" />
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_test_pyMfp9TOUzuH2y" />
     </application>
 
 </manifest>

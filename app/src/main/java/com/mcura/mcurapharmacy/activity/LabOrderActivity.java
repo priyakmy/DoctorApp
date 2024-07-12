@@ -80,6 +80,8 @@ import com.mcura.mcurapharmacy.model.LabOrderModel;
 import com.mcura.mcurapharmacy.model.PharmacyModel;
 import com.mcura.mcurapharmacy.model.PostPaymentModel;
 import com.mcura.mcurapharmacy.view.SegmentedGroup;
+import com.razorpay.PaymentData;
+import com.razorpay.PaymentResultWithDataListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -101,7 +103,7 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class LabOrderActivity extends AppCompatActivity implements LabInterface, View.OnClickListener, RadioGroup.OnCheckedChangeListener {
+public class LabOrderActivity extends AppCompatActivity implements LabInterface, View.OnClickListener, RadioGroup.OnCheckedChangeListener, PaymentResultWithDataListener {
 
     String counterName[] = {"SELECT COUNTER", "CT SCANNING", "ULTRASOUND", "PATHOLOGY", "X-RAY", "RADIOLOGY", "MRI"};
     int counterId[] = {0, 6811, 6812, 6815, 6819, 6820, 6823};
@@ -112,6 +114,8 @@ public class LabOrderActivity extends AppCompatActivity implements LabInterface,
     private String hospitalId;
     private Integer selectedUserRoleId;
     private Integer mrno;
+    private ArrayList<LabOrderDetailModel> labOrderDetailModels;
+    private int labOrderId;
     EditText search_by_patient;
     ImageView imageData;
     AlertDialog.Builder alertBuilder;
@@ -121,6 +125,7 @@ public class LabOrderActivity extends AppCompatActivity implements LabInterface,
     private SwipeMenuExpandableListView laborder_listview;
     //private PharmacyAdapter pharmacyAdapter;
     private Spinner pharmacy_status;
+
     String[] pharmacyStatus, pharmacyStatusArray;
     private SimpleDateFormat dateFormatter;
     private TextView tvFromTime, tvToTime;
@@ -179,6 +184,10 @@ public class LabOrderActivity extends AppCompatActivity implements LabInterface,
     private Spinner spinner_lab_filter;
     public static String counterNo = "0";
     private Spinner spinner_search_by;
+
+    public LabOrderActivity(ArrayList<LabOrderDetailModel> labOrderDetailModels) {
+        this.labOrderDetailModels = labOrderDetailModels;
+    }
 
 
     @Override
@@ -486,26 +495,106 @@ public class LabOrderActivity extends AppCompatActivity implements LabInterface,
         }
     }
 
-    /*private void callSavedLabOrderDetailApi(final LabDatum labDatum, final LabChildDatum labChildDatum) {
-        showLoadingDialog();
-        mCuraApplication.getInstance().mCuraEndPoint.getSavedLabOrderDetails(labDatum.getLabOrderId(), labDatum.getUserRoleId(), labChildDatum.getOrderTransactionId(), new Callback<LabOrderModel>() {
-            @Override
-            public void success(LabOrderModel labOrderModel, Response response) {
-                if (paidStatus == 0) {
-                    //showUnpaidPharmacyOrderDialog(pharmacyModel, pharmacyOrderDetailModels, pharmacyChildDatum);
-                } else if (paidStatus == 1) {
-                    //showPaidPharmacyOrderDialog(pharmacyOrderDetailModels);
-                }
-                showUnpaidLabOrderDialog(labDatum, labOrderModel, labChildDatum);
-                dismissLoadingDialog();
+    @Override
+    public void onPaymentSuccess(String s, PaymentData paymentData) {
+        Log.d("LabOrderDetail", "onPaymentSuccess: "+paymentData);
+        try {
+            SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+            String rp_orderid = sh.getString("rp_orderid", "");
+
+            //paymentLabFee
+            JsonObject obj = new JsonObject();
+            obj.addProperty("SubtenantId", subTenantId);
+            obj.addProperty("HospitalNo", hospitalId);
+            obj.addProperty("AppnatureId", "0");
+            obj.addProperty("UserRoleId", userRoleId);
+            obj.addProperty("typeOfReferalDoctorId", "0");
+            obj.addProperty("Description", "Lab Fee");
+            obj.addProperty("PaymentMode", 4);
+            obj.addProperty("AppId", "0");
+            obj.addProperty("BillAmount", payableAmount);
+            obj.addProperty("CollectedBy", userRoleId);
+            obj.addProperty("ServiceType", "4");
+            obj.addProperty("Mrno", mrno);
+            obj.addProperty("HIS_BillNo", s);
+            obj.addProperty("MobileNo", patContact);
+            obj.addProperty("ScheduleId", "0");
+            obj.addProperty("finalBillAmount", payableAmount);
+
+            JsonArray billDiscount = new JsonArray();
+            obj.add("billDiscount", billDiscount);
+            obj.addProperty("orderId", labOrderId);
+
+            JsonArray objectKeyArray = new JsonArray();
+            obj.add("OrdTxnIds", objectKeyArray);
+
+            JsonArray itemDetails = new JsonArray();
+            for (int i = 0; i < labOrderDetailModels.size(); i++) {
+                JsonObject itemObject = new JsonObject();
+
+                itemObject.addProperty("itemId", labOrderDetailModels.get(i).getLabTestId());
+                itemObject.addProperty("billAmount", labOrderDetailModels.get(i).getLabTestCost());
+                itemObject.addProperty("discount", "0");
+                itemObject.addProperty("maxDiscount", "0");
+                itemObject.addProperty("payableAmount", labOrderDetailModels.get(i).getLabTestCost());
+                itemDetails.add(itemObject);
             }
 
-            @Override
-            public void failure(RetrofitError error) {
-                dismissLoadingDialog();
-            }
-        });
-    }*/
+            obj.add("itemDetails", itemDetails);
+
+            obj.addProperty("PymtOrderId", paymentData.getPaymentId());
+            obj.addProperty("PymtSignature", paymentData.getSignature());
+            obj.addProperty("Hospital_BillNo", s);
+            obj.addProperty("rpOrderId", rp_orderid);
+            obj.addProperty("exRate", "1.0");
+            obj.addProperty("currency", "1");
+
+            JsonObject cardDetails = new JsonObject();
+            obj.add("cardDetails", cardDetails);
+
+            JsonObject chequeDDDetails = new JsonObject();
+            obj.add("chequeDDDetails", chequeDDDetails);
+
+            obj.addProperty("isFree", "0");
+            obj.addProperty("freeReason", "");
+
+
+
+            System.out.println(obj.toString());
+            Log.e("priya__", String.valueOf(obj));
+
+            showLoadingDialog();
+            mCuraApplication.getInstance().mCuraEndPoint.PostPaymentLabFee(obj, new Callback<PostPaymentModel>() {
+                @Override
+                public void success(PostPaymentModel postPaymentModel, Response response) {
+                    Log.d("LabOrderDetail", "success: "+response.getStatus());
+//                    Toast.makeText(LabOrderActivity.this, "Order has been paid..", Toast.LENGTH_LONG).show();
+//                    Intent i = new Intent(LabOrderActivity.this, LabOrderActivity.class);
+//                    startActivity(i);
+//                    finish();
+//                    dismissLoadingDialog();
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+                    Log.d("LabOrderDetail", "error: "+error.getMessage());
+                    dismissLoadingDialog();
+                }
+            });
+        } catch (Exception e) {
+            Log.d("LabOrderDetail", "error exp: "+e.getMessage());
+            dismissLoadingDialog();
+            Toast.makeText(LabOrderActivity.this, "An error occurred. Please try again.", Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    @Override
+    public void onPaymentError(int i, String s, PaymentData paymentData) {
+        Log.d("LabOrderDetail", "onPaymentError: "+ i + " " + s);
+
+    }
+
 
 
     private class getData extends AsyncTask<String, String, String> {
@@ -917,6 +1006,7 @@ public class LabOrderActivity extends AppCompatActivity implements LabInterface,
                     appNatureId = 0;
                     paymentDescription = "Pharmacy Amount";
                     if (paymentMode.equals("1")) {
+                        Toast.makeText(LabOrderActivity.this, "1", Toast.LENGTH_SHORT).show();
                         callPaymentAPiforLabKims(bill_payment_activity_hIs_no.getText().toString(), group, child);
                     } else if (paymentMode.equals("2")) {
                         callPaymentAPiforLabKims(bill_payment_activity_hIs_no.getText().toString(), group, child);
@@ -992,6 +1082,9 @@ public class LabOrderActivity extends AppCompatActivity implements LabInterface,
         }
         if (paymentMode.equals("3")) {
             postPaymentForLabCash(obj, group);
+        }
+        if (paymentMode.equals("4")) {
+          //  postPaymentForLabCash(obj, group);
         }
     }
 
@@ -1082,15 +1175,6 @@ public class LabOrderActivity extends AppCompatActivity implements LabInterface,
                         postPaymentModel.getStatusId() == EnumType.PaymentStatusId.mFillCashCard.getStatusId()) {
                     showErrorDialog(postPaymentModel.getMsg());
                 }
-                /*Toast.makeText(LabOrderActivity.this, postPaymentModel.getMsg(), Toast.LENGTH_LONG).show();
-                if (postPaymentModel.getMsg().equalsIgnoreCase("Payment Successfull") || postPaymentModel.getMsg().equalsIgnoreCase("Payment is already done.")) {
-                    String id = postPaymentModel.getID();
-                    String data[] = id.split("-");
-                    //getPharmacyPrescOrdersUpdateBillingDone(pharmacyModels);
-                    //reloadLabDetail();
-                    //printBill(data, group);
-                    showSuccessDialog(postPaymentModel.getMsg(), data, group);
-                }*/
                 dismissLoadingDialog();
             }
 

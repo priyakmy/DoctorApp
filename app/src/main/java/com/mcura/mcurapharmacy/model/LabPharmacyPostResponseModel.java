@@ -21,6 +21,18 @@ public class LabPharmacyPostResponseModel {
     @Expose
     private boolean status;
 
+    @SerializedName("rpOrderId")
+    @Expose
+    private String rpOrderId;
+
+    public String getRpOrderId() {
+        return rpOrderId;
+    }
+
+    public void setRpOrderId(String rpOrderId) {
+        this.rpOrderId = rpOrderId;
+    }
+
     public String getFilepath() {
         return filepath;
     }

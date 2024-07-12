@@ -1,5 +1,8 @@
 package com.mcura.mcurapharmacy.Helper;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
 
 import com.mcura.mcurapharmacy.encryption.AESCrypt;
@@ -27,6 +30,15 @@ public class Helper {
         Log.d("formattedDate", orderedDate);
         System.out.print("formattedDate-->" + orderedDate);
         return orderedDate;
+    }
+    public static boolean isInternetConnected(Context context){
+        ConnectivityManager cm =
+                (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+        return isConnected;
     }
     public static String getAge(int year, int month, int day){
         Calendar dob = Calendar.getInstance();

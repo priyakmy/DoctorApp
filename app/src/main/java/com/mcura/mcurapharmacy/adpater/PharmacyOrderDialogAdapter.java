@@ -1,6 +1,7 @@
 package com.mcura.mcurapharmacy.adpater;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -31,6 +32,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -52,6 +54,7 @@ import com.mcura.mcurapharmacy.model.LabPharmacyPostResponseModel;
 import com.mcura.mcurapharmacy.model.PharmacyModel;
 import com.mcura.mcurapharmacy.model.PharmacyOrderDetailModel;
 import com.mcura.mcurapharmacy.model.PostPaymentModel;
+import com.mcura.mcurapharmacy.paymentFromRazorpay;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -318,6 +321,9 @@ public class PharmacyOrderDialogAdapter extends BaseAdapter {
         TextView tv_pat_name = (TextView) PaymentDialog.findViewById(R.id.tv_pat_name);
         TextView tv_pat_dob_age = (TextView) PaymentDialog.findViewById(R.id.tv_pat_dob_age);
         TextView tv_pat_contact = (TextView) PaymentDialog.findViewById(R.id.tv_pat_contact);
+        RadioButton online = PaymentDialog.findViewById(R.id.online);
+        online.setVisibility(View.VISIBLE);
+
 
         tv_consultant_name.setText(model.getDoctorName().toString());
         tv_pat_name.setText(model.getPatname().toString());
@@ -387,6 +393,9 @@ public class PharmacyOrderDialogAdapter extends BaseAdapter {
                     } else if (paymentMode.equals("3")) {
                         callPaymentAPiforPharmacyKims(bill_payment_activity_hIs_no.getText().toString(), model);
                     }
+                    if(paymentMode.equals("4")){
+                        callPaymentAPiforPharmacyKims(bill_payment_activity_hIs_no.getText().toString(), model);
+                    }
                 } else {
                     bill_payable_amount.setError("Enter Amount to be paid.");
                 }
@@ -404,6 +413,9 @@ public class PharmacyOrderDialogAdapter extends BaseAdapter {
                         break;
                     case R.id.cheque:
                         paymentMode = "3";
+                        break;
+                    case R.id.online:
+                        paymentMode = "4";
                         break;
                 }
             }
@@ -454,6 +466,9 @@ public class PharmacyOrderDialogAdapter extends BaseAdapter {
         if (paymentMode.equals("3")) {
             postPaymentForPharmacyCash(obj, pharmacyModels);
         }
+      /*  if(paymentMode.equals("4")){
+            new paymentFromRazorpay(context,obj);
+        }*/
     }
 
     private void postPaymentForPharmacyCash(JsonObject obj, final PharmacyModel pharmacyModels) {

@@ -29,7 +29,8 @@ public class MCuraApplication extends Application {
     private static MCuraApplication instance;
     public RestAdapter.Builder mRestBuilder, mRestBuilderPostPayment, mRestBuilderTest,mRestBuilderConsumer;
     public RestAdapter mRestAdapter, mRestAdapterPostPayment, mRestAdapterTest,mRestAdapterConsumer;
-    public MCuraEndPointInterface mCuraEndPoint, mCuraEndPointPostPayment, mCuraEndPointTest,mCuraEndPointConsumer;
+    public MCuraEndPointInterface mCuraEndPoint, mCuraEndPointPostPayment, mCuraEndPointTest,mCuraEndPointConsumer, mCuraConsumerEndPoint;
+
     private BroadcastReceiver receiver;
 
     public MCuraApplication() {
